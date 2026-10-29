@@ -23,6 +23,7 @@ The menu in the top-left switches between three views:
 Card types: `video`, `press`, `release`, `post`. A `link` with `href: "#music"` or `"#artists"` jumps inside the site.
 
 ## Before launch
+- **Vinyl player**: removed for now at the owner's request, until the vinyl is in the Bandcamp store. It is saved in the Git history (commit 98ee297 and earlier) and can be restored.
 - **YouTube**: add `youtube: "https://www.youtube.com/watch?v=..."` to any PM News entry and the card plays the video in place. The Phenomenal video also sits on PM Music.
 - **Instagram auto-feed**: create a free JSON feed at behold.so for @pack_mentality_music and paste its URL into `PM_CONFIG.instagramFeed` in `news.js`. The latest posts (6 on the free plan) then appear in PM News after the manual entries.
 - **Press release**: drafted from the label's own copy. Replace `body` with the official text, or add `file: "assets/news/press-release.pdf"`.

@@ -47,7 +47,7 @@ window.PM_NEWS = [
     type: "post",
     date: "Jul 31, 2021",
     title: "Pack Mentality Music joins Instagram",
-    text: "The Pack is on Instagram. Follow @pack_mentality_music for new music, vinyl drops and everything the label is up to.",
+    text: "The Pack is on Instagram. Follow @pack_mentality_music for new music, shows and everything the label is up to.",
     image: "assets/img/news-pm-logo-white.jpg",
     link: { label: "Follow on Instagram", href: "https://www.instagram.com/pack_mentality_music" }
   }
@@ -64,11 +64,5 @@ window.PM_CONFIG = {
      PM News automatically, after the entries above. Leave it empty to
      show only the entries above. */
   instagramFeed: "",
-  instagramCount: 6,
-
-  /* Playable record on PM Music. Put the song (or a preview clip) at this
-     path and the record plays it, pitch-shifting and scratching as people
-     spin it. Until the file exists, the record still spins with vinyl
-     crackle and scratch sounds. MP3 or M4A both work. */
-  recordAudio: "assets/audio/phenomenal.mp3"
+  instagramCount: 6
 };
