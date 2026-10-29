@@ -80,7 +80,7 @@ h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance}
 .text-link:hover{color:var(--ink)}
 
 /* ---------- Header bar + side drawer ---------- */
-.site-head{position:sticky;z-index:50;top:0;padding-top:env(safe-area-inset-top,0px);background:rgba(6,5,9,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-block:1px solid var(--line);transition:box-shadow .3s ease}
+.site-head{position:sticky;z-index:50;top:0;padding-top:env(safe-area-inset-top,0px);background:rgba(6,5,9,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-block:1px solid var(--line);transition:box-shadow .3s ease}
 .site-head::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--grad);opacity:.7}
 .site-head[data-solid="true"]{box-shadow:0 12px 32px -16px rgba(0,0,0,.9)}
 .home-top{background:#000;padding-block:clamp(20px,3vw,40px) clamp(10px,2vw,22px)}
@@ -165,7 +165,7 @@ a.reach-row:hover svg{color:var(--mint)}
 /* Mantra: spotlight sweeps the label's motto; follows the pointer on desktop */
 .mantra{position:relative;overflow:visible;padding-block:clamp(64px,9vw,120px) clamp(56px,8vw,96px)}
 /* one continuous stage behind hero + mantra: spotlight pool up top, violet haze low, fading to page black */
-.home-stage{position:relative;overflow-x:clip;background:
+.home-stage{position:relative;clip-path:inset(0 0 -600px 0);background:
   radial-gradient(55% 38% at 50% 18%,rgba(110,146,207,.07),transparent 70%),
   radial-gradient(70% 34% at 50% 78%,rgba(162,93,224,.09),transparent 72%),
   linear-gradient(180deg,#050407 0%,var(--void) 100%)}
