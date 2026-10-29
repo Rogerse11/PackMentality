@@ -32,7 +32,7 @@
 
   --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
   --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:Menlo,"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --f-mono:"IBM Plex Mono",Menlo,ui-monospace,Consolas,monospace;
 
   --r:10px;                /* the one corner radius */
   --r-sm:4px;
@@ -134,11 +134,12 @@ body[data-drawer="true"]{overflow:hidden}
 .hero{position:relative;background:transparent;padding-block:clamp(84px,10vw,112px) 0}
 .hero-stage{max-width:980px;margin-inline:auto}
 .hero-stage video{width:100%;aspect-ratio:1280/800;object-fit:cover;mix-blend-mode:screen;filter:brightness(1.04) contrast(1.18);-webkit-mask-image:radial-gradient(68% 62% at 50% 46%,#000 48%,transparent 92%);mask-image:radial-gradient(68% 62% at 50% 46%,#000 48%,transparent 92%)}
-.hero-copy{position:relative;z-index:1;max-width:720px;margin:clamp(-48px,-3vw,-16px) auto 0;display:grid;gap:1.75rem}
-.manifesto{font:400 clamp(.98rem,1.5vw,1.08rem)/1.8 var(--f-mono);color:var(--soft)}
-.manifesto strong{font-weight:500;color:var(--ink)}
-.email-chip{display:inline-flex;align-items:center;min-height:46px;border:1px solid var(--line);border-radius:var(--r);padding:0 .3rem 0 1rem;font:500 .92rem/1 var(--f-mono);color:var(--ink)}
-.email-chip a{text-decoration:none;overflow-wrap:anywhere;padding-block:.6rem}
+.hero-copy{position:relative;z-index:1;max-width:680px;margin:clamp(-48px,-3vw,-12px) auto 0;display:grid;gap:1.6rem}
+.manifesto{font:400 clamp(.95rem,1.4vw,1.05rem)/1.8 var(--f-mono);color:var(--soft);text-wrap:pretty}
+.contact{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:.6rem}
+.contact .btn{font:500 .85rem/1 var(--f-mono);letter-spacing:.04em}
+.email-chip{display:flex;align-items:center;justify-content:space-between;min-width:0;min-height:46px;border:1px solid var(--line);border-radius:var(--r);padding:0 .3rem 0 1rem;font:500 .85rem/1 var(--f-mono);letter-spacing:.02em;color:var(--ink)}
+.email-chip a{text-decoration:none;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-block:.6rem}
 .email-chip button{margin-left:.6rem;border:0;border-radius:var(--r-sm);background:var(--surface-2);color:var(--mint);padding:.55rem .75rem;font:500 .72rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .email-chip button:hover{color:var(--ink)}
 
@@ -197,11 +198,11 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 .release-hero{position:relative;overflow:hidden;background:#000;padding-block:clamp(88px,10vw,112px) clamp(40px,5vw,64px)}
 .release-hero .blur{position:absolute;inset:-60px;background:url("assets/img/phenomenal-cover.jpg") center/cover;filter:blur(70px) saturate(1.1) brightness(.4);transform:scale(1.1)}
 .release-hero::after{content:"";position:absolute;inset:auto 0 0;height:140px;background:linear-gradient(transparent,var(--void))}
-.sleeve{position:relative;z-index:1;width:min(100%,72vh,640px);margin-inline:auto;aspect-ratio:1}
+.sleeve{--out:0;position:relative;z-index:1;width:min(calc((100vw - 40px) / 1.34),64vh,600px);margin-inline:auto;aspect-ratio:1;transform:translateX(calc(var(--out) * -16%))}
 .sleeve img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;border-radius:var(--r-sm);box-shadow:0 40px 80px -30px #000}
-.vinyl{position:absolute;z-index:1;top:3%;left:3%;width:94%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#060509 0 2.6%,transparent 2.8%),repeating-radial-gradient(circle,#141116 0 2px,#0a080c 2px 4px);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.vinyl{position:absolute;z-index:1;top:3%;left:3%;width:94%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#060509 0 2.6%,transparent 2.8%),repeating-radial-gradient(circle,#141116 0 2px,#0a080c 2px 4px);transform:translateX(calc(var(--out) * 34%)) rotate(calc(var(--out) * 300deg));box-shadow:0 30px 60px -20px rgba(0,0,0,.9)}
+.vinyl::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent 0 18%,rgba(255,255,255,.07) 23%,transparent 30% 68%,rgba(241,13,250,.07) 74%,transparent 80%)}
 .vinyl::before{content:"";position:absolute;inset:34%;border-radius:50%;background:url("assets/img/phenomenal-cover.jpg") center/cover;animation:spin 8s linear infinite}
-.sleeve.out .vinyl{transform:translateX(30%)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .release-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:start}
 .release-main{display:grid;gap:1.1rem}
@@ -215,6 +216,19 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 .panel{display:grid;gap:1.25rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,3vw,1.75rem)}
 .panel .btn{width:100%;justify-content:space-between;text-align:left}
 .panel hr{border:0;border-top:1px solid var(--line);margin:0}
+
+/* YouTube: thumbnail + play button; the player loads only when clicked */
+.yt{position:relative;aspect-ratio:16/9;width:100%;background:#000;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.yt-lg{box-shadow:0 40px 80px -40px rgba(241,13,250,.35)}
+.yt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.yt button{position:absolute;inset:0;z-index:1;width:100%;border:0;background:linear-gradient(0deg,rgba(6,5,9,.6),transparent 55%);cursor:pointer;display:grid;place-items:center;color:#fff}
+.yt .play{width:clamp(60px,8vw,84px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:linear-gradient(100deg,#c61bd4,#8a4fd6 45%,#5a78c8 80%,#3f9fb4);box-shadow:0 10px 40px -8px rgba(241,13,250,.7);transition:transform .25s ease}
+.yt .play svg{width:38%;height:38%;margin-left:6%}
+.yt button:hover .play{transform:scale(1.08)}
+.yt:hover img{transform:scale(1.03)}
+.yt .label{position:absolute;z-index:2;left:1rem;bottom:.9rem;font:500 .72rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);pointer-events:none}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.card-media.yt{border:0;border-radius:0;aspect-ratio:4/3}
 
 /* ---------- ARTISTS ---------- */
 /* Artist hero: 8-bit "player select" stage. Name plate glitches between the purple and orange plates. */
@@ -362,6 +376,12 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   .falls-col:nth-child(2){margin-top:0}
   }
 @media (max-width:560px){
+  .contact{grid-template-columns:1fr 1fr}
+  .signup .btn{flex:1 1 100%}
+  .contact .email-chip{grid-column:1/-1}
+  .hero-copy{margin-top:0;gap:1.25rem}
+  .manifesto{font-size:.94rem;line-height:1.75}
+  .section-head.row .btn{justify-self:start}
   .foot-links{grid-template-columns:minmax(0,1fr)}
   .section-head.row{grid-template-columns:minmax(0,1fr)}
 }
@@ -433,8 +453,8 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
       </div>
       <div class="hero-copy">
         <h1 class="sr">Pack Mentality Music</h1>
-        <p class="manifesto">Pack Mentality Music is an independent record label looking for talent with heart and vision. We embrace all genres and maintain a commitment to physical album releases on <strong>vinyl</strong> as well as <strong>streaming</strong>. Reach out, we love listening to your music.</p>
-        <div class="btn-row">
+        <p class="manifesto">Pack Mentality Music is an independent record label looking for talent with heart and vision. We embrace all genres and maintain a commitment to physical album releases on vinyl as well as streaming. Reach out, we love listening to your music.</p>
+        <div class="contact">
           <span class="email-chip"><a href="mailto:contact@packmentalitymusic.com">contact@packmentalitymusic.com</a><button type="button" id="copyEmail" data-email="contact@packmentalitymusic.com">Copy</button></span>
           <a class="btn" href="https://www.instagram.com/pack_mentality_music" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>Instagram</a>
           <a class="btn" href="https://www.youtube.com/@packmentalitymusic729" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg>YouTube</a>
@@ -506,6 +526,18 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
           <a class="btn" href="https://www.instagram.com/pack_mentality_music" target="_blank" rel="noopener"><span style="display:inline-flex;align-items:center;gap:.55em"><svg><use href="#i-ig"/></svg>@pack_mentality_music</span><svg><use href="#i-arrow"/></svg></a>
         </div>
       </aside>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="mvTitle">
+    <div class="wrap">
+      <div class="section-head row">
+        <div style="display:grid;gap:.9rem">
+          <p class="eyebrow">Official music video</p>
+          <h2 id="mvTitle" class="h2">Phenomenal</h2>
+        </div>
+        <a class="btn" href="https://www.youtube.com/watch?v=7n5GSWEJHmY" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg>Watch on YouTube</a>
+      </div>
+      <div class="yt yt-lg" data-yt="7n5GSWEJHmY" data-title="Phenomenal by 8 Ton Grams (official music video)" data-label="Official music video"></div>
     </div>
   </section>
 </main>
@@ -672,7 +704,7 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
     current=name;
     window.scrollTo(0,0);
     closeNav();
-    var sl=$("#sleeve"); sl.classList.remove("out"); if(name==="music") setTimeout(function(){sl.classList.add("out")},300);
+    if(name==="music") vinylIntro();
     requestAnimationFrame(parallax);
     headState();
     if(name==="artists") glitchNow();
@@ -721,23 +753,58 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
     try{navigator.clipboard.writeText(copyBtn.dataset.email).then(done,fallback)}catch(e){fallback()}
   });
 
-  /* PM News (data in news.js) */
-  var track=$("#newsTrack"),items=window.PM_NEWS||[];
-  var labels={video:"Video",press:"Press release",release:"New release",post:"News"};
-  items.forEach(function(it,i){
-    var type=labels[it.type]?it.type:"post", media="";
-    if(it.video) media='<video muted loop playsinline preload="metadata" poster="'+esc(it.poster||"")+'" data-src="'+esc(it.video)+'"></video>';
-    else if(it.image||it.poster) media='<img loading="lazy" src="'+esc(it.image||it.poster)+'" alt="">';
-    if(media) media=it.youtube?'<a class="card-media" href="'+esc(it.youtube)+'" target="_blank" rel="noopener" aria-label="Watch '+esc(it.title)+' on YouTube">'+media+'</a>':'<div class="card-media">'+media+'</div>';
+  /* YouTube click-to-play: thumbnail first, the player loads only on click */
+  function ytId(u){var m=String(u||"").match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:(/^[\w-]{11}$/.test(u)?u:null)}
+  function mountYT(el){
+    var id=el.dataset.yt,title=el.dataset.title||"Play video",fb=el.dataset.fallback||"assets/img/phenomenal-cover.jpg";
+    el.innerHTML='<img alt="" loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg"><button type="button" aria-label="Play: '+esc(title)+'"><span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span></button><span class="label">'+esc(el.dataset.label||"Play video")+'</span>';
+    var img=el.querySelector("img"); img.onerror=function(){img.onerror=null;img.src=fb};
+    el.querySelector("button").addEventListener("click",function(){
+      el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="'+esc(title)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    });
+  }
+  $$(".yt[data-yt]").forEach(mountYT);
+
+  /* PM News: entries from news.js first, then optional Instagram posts */
+  var track=$("#newsTrack"),items=(window.PM_NEWS||[]).slice();
+  var labels={video:"Video",press:"Press release",release:"New release",post:"News",instagram:"Instagram"};
+  function addCard(it,i){
+    var type=labels[it.type]?it.type:"post",media="",yid=ytId(it.youtube),fb=it.image||it.poster||"assets/img/phenomenal-cover.jpg";
+    if(yid) media='<div class="card-media yt" data-yt="'+yid+'" data-title="'+esc(it.title)+'" data-label="Watch" data-fallback="'+esc(fb)+'"></div>';
+    else if(it.video) media='<div class="card-media"><video muted loop playsinline preload="metadata" poster="'+esc(it.poster||"")+'" data-src="'+esc(it.video)+'"></video></div>';
+    else if(it.image||it.poster){
+      var img='<img loading="lazy" src="'+esc(it.image||it.poster)+'" alt="">';
+      media=(type==="instagram"&&it.link)?'<a class="card-media" href="'+esc(it.link.href)+'" target="_blank" rel="noopener" aria-label="Open this post on Instagram">'+img+'</a>':'<div class="card-media">'+img+'</div>';
+    }
     var cta="";
     if(type==="press"&&it.body) cta+='<button class="btn" type="button" data-read="'+i+'">Read the release</button>';
     if(it.file) cta+='<a class="btn" href="'+esc(it.file)+'" target="_blank" rel="noopener">Open document</a>';
     if(it.link&&it.link.href){var ext=/^https?:/i.test(it.link.href);cta+='<a class="btn'+(type==="release"?" btn-primary":"")+'" href="'+esc(it.link.href)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(it.link.label||"Open")+'<svg><use href="#i-arrow"/></svg></a>'}
     var card=document.createElement("article");
-    card.className="card"; card.setAttribute("aria-label",(i+1)+" of "+items.length);
-    card.innerHTML=media+'<div class="card-body"><div class="card-meta"><span class="type">'+labels[type]+'</span>'+(it.date?'<span class="sep"></span><span>'+esc(it.date)+'</span>':'')+'</div><h3 class="h3">'+esc(it.title)+'</h3><p>'+esc(it.text)+'</p>'+(cta?'<div class="btn-row">'+cta+'</div>':'')+'</div>';
+    card.className="card";
+    card.innerHTML=media+'<div class="card-body"><div class="card-meta"><span class="type">'+labels[type]+'</span>'+(it.date?'<span class="sep"></span><span>'+esc(it.date)+'</span>':'')+'</div>'+(it.title?'<h3 class="h3">'+esc(it.title)+'</h3>':'')+'<p>'+esc(it.text)+'</p>'+(cta?'<div class="btn-row">'+cta+'</div>':'')+'</div>';
     track.appendChild(card);
-  });
+    var y=card.querySelector(".yt[data-yt]"); if(y) mountYT(y);
+    var v=card.querySelector("video[data-src]"); if(v&&typeof wireVideo==="function"&&wireReady) wireVideo(v);
+  }
+  var wireReady=false;
+  items.forEach(addCard);
+  var cfg=window.PM_CONFIG||{};
+  if(cfg.instagramFeed){
+    fetch(cfg.instagramFeed).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+      var posts=(Array.isArray(d)?d:(d.posts||[])).slice(0,cfg.instagramCount||6);
+      posts.forEach(function(p){
+        var sz=p.sizes&&(p.sizes.medium||p.sizes.large);
+        var img=(sz&&sz.mediaUrl)||p.thumbnailUrl||p.mediaUrl;
+        var cap=(p.prunedCaption||p.caption||"").replace(/\s+/g," ").trim();
+        if(cap.length>150) cap=cap.slice(0,147).replace(/\s\S*$/,"")+"…";
+        var dt=p.timestamp?new Date(p.timestamp).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"";
+        var it={type:"instagram",date:dt,title:"",text:cap||"New post from the Pack.",image:img,link:{label:"View on Instagram",href:p.permalink||"https://www.instagram.com/pack_mentality_music"}};
+        items.push(it); addCard(it,items.length-1);
+      });
+      updateCount();
+    }).catch(function(){ /* feed unavailable: the manual posts stay */ });
+  }
   var prev=$("#newsPrev"),next=$("#newsNext"),count=$("#newsCount");
   function step(){var c=track.firstElementChild;return c?c.getBoundingClientRect().width+20:300}
   function updateCount(){
@@ -765,14 +832,15 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   reader.addEventListener("click",function(e){if(e.target===reader)reader.close()});
 
   /* Videos play only while on screen */
-  $$("video[data-src]").forEach(function(v){
+  function wireVideo(v){
     if(!("IntersectionObserver" in window)){v.src=v.dataset.src;return}
     new IntersectionObserver(function(ents){ents.forEach(function(en){
       var vid=en.target;
       if(en.isIntersecting){if(!vid.getAttribute("src"))vid.src=vid.dataset.src;if(!reduce){var p=vid.play();p&&p.catch(function(){})}}
       else vid.pause();
     })},{threshold:.25}).observe(v);
-  });
+  }
+  $$("video[data-src]").forEach(wireVideo);
   if(reduce){var hv=$("#heroVideo");hv.removeAttribute("autoplay");hv.pause()}
 
   /* Parallax photo wall: columns move at different speeds and directions,
@@ -803,6 +871,23 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   function glitchLoop(){clearTimeout(gTimer);gTimer=setTimeout(function(){if(!views.artists.hidden&&!document.hidden)glitchNow();glitchLoop()},2200+Math.random()*2600)}
   if(!reduce){gl.addEventListener("pointerenter",glitchNow);glitchLoop()}
   $$(".player").forEach(function(p){p.addEventListener("pointerenter",glitchNow)});
+
+  /* Vinyl: eases out of the sleeve when PM Music opens, slides back in as you scroll down */
+  var sleeve=$("#sleeve"),rHero=$(".release-hero"),intro=0,introT=null;
+  function vinylSet(){
+    var h=rHero.offsetHeight||1,k=Math.min(1,Math.max(0,1-scrollY/(h*.6)));
+    sleeve.style.setProperty("--out",(intro*k).toFixed(4));
+  }
+  function vinylIntro(){
+    cancelAnimationFrame(introT);
+    if(reduce){intro=1;vinylSet();return}
+    intro=0;vinylSet();
+    var t0=null,D=1500;
+    function ease(x){var c=1.2;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)}
+    function f(t){if(t0===null)t0=t;var x=Math.max(0,Math.min(1,(t-t0-250)/D));intro=ease(x);vinylSet();if(x<1)introT=requestAnimationFrame(f)}
+    introT=requestAnimationFrame(f);
+  }
+  addEventListener("scroll",function(){if(!views.music.hidden)requestAnimationFrame(vinylSet)},{passive:true});
 
   /* Follow The Pack signup */
   var form=$("#signup"),msg=$("#signupMsg"),input=$("#signupEmail");

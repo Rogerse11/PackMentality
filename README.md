@@ -23,7 +23,8 @@ The menu in the top-left switches between three views:
 Card types: `video`, `press`, `release`, `post`. A `link` with `href: "#music"` or `"#artists"` jumps inside the site.
 
 ## Before launch
-- **Video entry**: the placeholder uses a Night Beach clip. Swap in the owner's video (`video:` mp4 or `youtube:` link).
+- **YouTube**: add `youtube: "https://www.youtube.com/watch?v=..."` to any PM News entry and the card plays the video in place. The Phenomenal video also sits on PM Music.
+- **Instagram auto-feed**: create a free JSON feed at behold.so for @pack_mentality_music and paste its URL into `PM_CONFIG.instagramFeed` in `news.js`. The latest posts (6 on the free plan) then appear in PM News after the manual entries.
 - **Press release**: drafted from the label's own copy. Replace `body` with the official text, or add `file: "assets/news/press-release.pdf"`.
 - **Follow The Pack signup**: paste a form endpoint (Formspree, Mailchimp, ConvertKit) into `PM_CONFIG.signupEndpoint` in `news.js`. Until then, the form asks visitors to email contact@packmentalitymusic.com.
 - The beach GIFs were converted to MP4 loops (about 25 MB down to 0.6 MB). They look the same and load far faster. The original GIFs are untouched in `8TG Band Art`.

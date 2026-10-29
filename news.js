@@ -14,8 +14,8 @@
      image   picture for the card
      video   .mp4 file to play on the card (muted, loops). Use "poster"
              for its still frame.
-     youtube a full YouTube link. The card shows your image/poster and
-             opens the video on YouTube when clicked.
+     youtube a full YouTube link. The card shows the video's thumbnail and
+             plays it right on the card when clicked.
      link    { label: "Button text", href: "#music" or "https://..." }
              "#music" and "#artists" jump to those sections of the site.
      body    press release only: an array of paragraphs, shown in a
@@ -34,16 +34,13 @@ window.PM_NEWS = [
     link: { label: "Go to PM Music", href: "#music" }
   },
   {
-    // TODO: swap in the owner's video. Either point "video" at an .mp4
-    // in assets/news/ or add a "youtube" link. Placeholder uses the
-    // Night Beach clip already on the site.
     type: "video",
     date: "2024",
-    title: "Night Beach with 8 Ton Grams",
-    text: "8tahn and GRAEME after dark on the shoreline, from the Running Phenomenal shoot.",
-    video: "assets/video/8tg-beach-2.mp4",
-    poster: "assets/img/8tg-beach-2-poster.jpg",
-    link: { label: "More on YouTube", href: "https://www.youtube.com/@packmentalitymusic729" }
+    title: "Phenomenal: the official music video",
+    text: "8 Ton Grams bring Phenomenal to life. Press play, then go save the single.",
+    youtube: "https://www.youtube.com/watch?v=7n5GSWEJHmY",
+    image: "assets/img/phenomenal-cover.jpg",
+    link: { label: "Watch on YouTube", href: "https://www.youtube.com/watch?v=7n5GSWEJHmY" }
   },
   {
     // DRAFT press release written from the label's own copy.
@@ -69,5 +66,12 @@ window.PM_NEWS = [
    etc.) between the quotes to turn on "Follow The Pack" signups. While it
    is empty, the form tells visitors to email the label instead. */
 window.PM_CONFIG = {
-  signupEndpoint: ""
+  signupEndpoint: "",
+
+  /* Instagram auto-feed. Paste a Behold JSON feed URL (behold.so, free
+     for up to 6 posts) to add the latest @pack_mentality_music posts to
+     PM News automatically, after the entries above. Leave it empty to
+     show only the entries above. */
+  instagramFeed: "",
+  instagramCount: 6
 };
