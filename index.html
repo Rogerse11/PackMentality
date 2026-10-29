@@ -80,8 +80,11 @@ h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance}
 .text-link:hover{color:var(--ink)}
 
 /* ---------- Header bar + side drawer ---------- */
-.site-head{position:fixed;z-index:50;left:0;right:0;top:0;padding-top:env(safe-area-inset-top,0px);transition:background-color .3s ease,border-color .3s ease,backdrop-filter .3s ease;border-bottom:1px solid transparent}
-.site-head[data-solid="true"]{background:rgba(6,5,9,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.site-head{position:sticky;z-index:50;top:0;padding-top:env(safe-area-inset-top,0px);background:rgba(6,5,9,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-block:1px solid var(--line);transition:box-shadow .3s ease}
+.site-head::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--grad);opacity:.7}
+.site-head[data-solid="true"]{box-shadow:0 12px 32px -16px rgba(0,0,0,.9)}
+.home-top{background:#000;padding-block:clamp(20px,3vw,40px) clamp(10px,2vw,22px)}
+.home-top[hidden]{display:none!important}
 .head-in{height:68px;display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:calc(var(--wrap) + 160px);margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 .head-left{display:flex;align-items:center;gap:clamp(12px,2vw,24px);min-width:0}
 .menu-btn{display:inline-flex;align-items:center;gap:.7rem;height:44px;padding:0 .9rem 0 .75rem;border-radius:var(--r);border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font:500 .75rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;transition:border-color .2s ease,background-color .2s ease}
@@ -132,7 +135,7 @@ body[data-drawer="true"]{overflow:hidden}
 
 /* ---------- HOME ---------- */
 /* Home opener: spotlight logo, the motto right under it, scroll cue */
-.hero{position:relative;padding-block:clamp(76px,9vw,96px) 0}
+.hero{position:relative}
 .hero-stage{max-width:1000px;margin-inline:auto}
 .hero-stage video{width:100%;aspect-ratio:2.05;object-fit:cover;object-position:50% 47%;mix-blend-mode:screen;filter:brightness(1.04) contrast(1.18);-webkit-mask-image:radial-gradient(64% 70% at 50% 50%,#000 50%,transparent 94%);mask-image:radial-gradient(64% 70% at 50% 50%,#000 50%,transparent 94%)}
 .cue{display:flex;flex-direction:column;align-items:center;gap:.7rem;margin-top:clamp(28px,4vw,44px);font:500 .7rem/1 var(--f-mono);letter-spacing:.24em;text-transform:uppercase;color:var(--haze);text-decoration:none}
@@ -160,12 +163,12 @@ a.reach-row:hover svg{color:var(--mint)}
 .reach-row .copy{flex:none;border:0;border-radius:var(--r-sm);background:var(--surface-2);color:var(--mint);padding:.55rem .75rem;font:500 .7rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .reach-row .copy:hover{color:var(--ink)}
 /* Mantra: spotlight sweeps the label's motto; follows the pointer on desktop */
-.mantra{position:relative;overflow:visible;padding-block:clamp(8px,1.5vw,20px) clamp(56px,8vw,96px)}
+.mantra{position:relative;overflow:visible;padding-block:clamp(64px,9vw,120px) clamp(56px,8vw,96px)}
 /* one continuous stage behind hero + mantra: spotlight pool up top, violet haze low, fading to page black */
 .home-stage{position:relative;overflow-x:clip;background:
   radial-gradient(55% 38% at 50% 18%,rgba(110,146,207,.07),transparent 70%),
   radial-gradient(70% 34% at 50% 78%,rgba(162,93,224,.09),transparent 72%),
-  linear-gradient(180deg,#000 0%,#030205 45%,var(--void) 100%)}
+  linear-gradient(180deg,#050407 0%,var(--void) 100%)}
 .mantra-in{display:grid;gap:clamp(18px,2.5vw,28px);justify-items:center;text-align:center}
 .mantra-text{position:relative;margin:0;font:800 clamp(2.3rem,7.4vw,6.4rem)/.98 var(--f-display);letter-spacing:-.035em;text-wrap:balance}
 .mantra-text .line{display:block}
@@ -214,7 +217,7 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 .reader-in .h2{font-size:clamp(1.35rem,3vw,1.85rem)}
 
 /* ---------- MUSIC ---------- */
-.release-hero{position:relative;overflow:hidden;background:#000;padding-block:clamp(88px,10vw,112px) clamp(40px,5vw,64px)}
+.release-hero{position:relative;overflow:hidden;background:#000;padding-block:clamp(32px,5vw,56px) clamp(40px,5vw,64px)}
 .release-hero .blur{position:absolute;inset:-60px;background:url("assets/img/phenomenal-cover.jpg") center/cover;filter:blur(70px) saturate(1.1) brightness(.4);transform:scale(1.1)}
 .release-hero::after{content:"";position:absolute;inset:auto 0 0;height:140px;background:linear-gradient(transparent,var(--void))}
 .sleeve{--out:0;position:relative;z-index:1;width:min(calc((100vw - 40px) / 1.34),64vh,600px);margin-inline:auto;aspect-ratio:1;transform:translateX(calc(var(--out) * -16%))}
@@ -251,7 +254,7 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 
 /* ---------- ARTISTS ---------- */
 /* Artist hero: 8-bit "player select" stage. Name plate glitches between the purple and orange plates. */
-.select{position:relative;overflow:hidden;isolation:isolate;padding-block:clamp(104px,12vw,140px) clamp(36px,5vw,56px);border-bottom:1px solid var(--line);
+.select{position:relative;overflow:hidden;isolation:isolate;padding-block:clamp(44px,6vw,80px) clamp(36px,5vw,56px);border-bottom:1px solid var(--line);
   background:radial-gradient(50% 45% at 50% 42%,rgba(241,13,250,.16),transparent 70%),radial-gradient(60% 40% at 50% 100%,rgba(255,138,61,.10),transparent 70%),var(--void)}
 .select::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(243,239,248,.028) 3px 4px)}
 .select-stage{position:relative;padding-bottom:clamp(12px,2vw,20px)}
@@ -420,6 +423,20 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
 </svg>
 
+<!-- ================= HOME OPENER (above the header, home only) ================= -->
+<div class="home-top" id="homeTop">
+  <section class="hero" aria-label="Pack Mentality Music">
+    <div class="wrap">
+      <h1 class="sr">Pack Mentality Music</h1>
+      <div class="hero-stage">
+        <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/pm-spotlight-poster.jpg" aria-label="Pack Mentality Music logo under a spotlight">
+          <source src="assets/video/pm-spotlight.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- ================= HEADER ================= -->
 <header class="site-head" id="siteHead" data-solid="false" data-logo="false">
   <div class="head-in">
@@ -464,16 +481,6 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 <!-- ================= HOME ================= -->
 <main class="view" id="view-home">
   <div class="home-stage">
-  <section class="hero" aria-label="Pack Mentality Music">
-    <div class="wrap">
-      <h1 class="sr">Pack Mentality Music</h1>
-      <div class="hero-stage">
-        <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/pm-spotlight-poster.jpg" aria-label="Pack Mentality Music logo under a spotlight">
-          <source src="assets/video/pm-spotlight.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
 
   <section class="mantra" id="mantra" aria-label="If you have the Mentality, we have the Pack.">
     <div class="mantra-beam" aria-hidden="true"></div>
@@ -735,6 +742,7 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
     $$(".drawer-nav a[data-view]").forEach(function(a){a.dataset.view===name?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
     document.title=titles[name];
     current=name;
+    $("#homeTop").hidden=(name!=="home");
     window.scrollTo(0,0);
     closeNav();
     if(name==="music") vinylIntro();
@@ -753,7 +761,8 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   $("#drawerScrim").addEventListener("click",closeNav);
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeNav()});
   drawer.addEventListener("click",function(e){var a=e.target.closest("a[href^='#']");if(!a)return;if(a.getAttribute("href")===location.hash){show()}else{closeNav()}});
-  function headState(){var y=scrollY>40;head.dataset.solid=y?"true":"false";head.dataset.logo=(y||current!=="home")?"true":"false"}
+  var homeTop=$("#homeTop");
+  function headState(){var gone=current!=="home"||homeTop.getBoundingClientRect().bottom<=1;head.dataset.solid=gone?"true":"false";head.dataset.logo=gone?"true":"false"}
   addEventListener("scroll",headState,{passive:true});
   $("#headFollow").addEventListener("click",function(){$(".foot").scrollIntoView({behavior:reduce?"auto":"smooth"});setTimeout(function(){$("#signupEmail").focus({preventScroll:true})},reduce?0:700)});
 
