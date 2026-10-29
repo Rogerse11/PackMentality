@@ -48,7 +48,7 @@ window.PM_NEWS = [
     date: "Jul 31, 2021",
     title: "Pack Mentality Music joins Instagram",
     text: "The Pack is on Instagram. Follow @pack_mentality_music for new music, vinyl drops and everything the label is up to.",
-    image: "assets/img/pm-spotlight-poster.jpg",
+    image: "assets/img/news-pm-logo-white.jpg",
     link: { label: "Follow on Instagram", href: "https://www.instagram.com/pack_mentality_music" }
   }
 ];
