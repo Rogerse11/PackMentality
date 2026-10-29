@@ -136,7 +136,7 @@ body[data-drawer="true"]{overflow:hidden}
 /* ---------- HOME ---------- */
 /* Home opener: spotlight logo, the motto right under it, scroll cue */
 .hero{position:relative}
-.hero-stage{max-width:1000px;margin-inline:auto}
+.hero-stage{max-width:860px;margin-inline:auto}
 .hero-stage video{width:100%;aspect-ratio:2.05;object-fit:cover;object-position:50% 47%;mix-blend-mode:screen;filter:brightness(1.04) contrast(1.18);-webkit-mask-image:radial-gradient(64% 70% at 50% 50%,#000 50%,transparent 94%);mask-image:radial-gradient(64% 70% at 50% 50%,#000 50%,transparent 94%)}
 .cue{display:flex;flex-direction:column;align-items:center;gap:.7rem;margin-top:clamp(28px,4vw,44px);font:500 .7rem/1 var(--f-mono);letter-spacing:.24em;text-transform:uppercase;color:var(--haze);text-decoration:none}
 .cue i{width:1px;height:44px;background:linear-gradient(var(--haze),transparent);transform-origin:top;animation:cue 2.2s ease-in-out infinite}
@@ -402,6 +402,7 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 @media (max-width:560px){
   .about-grid{grid-template-columns:minmax(0,1fr)}
   .signup .btn{flex:1 1 100%}
+  .hero-stage{max-width:88%}
   .hero-stage video{aspect-ratio:1.45}
   .manifesto{font-size:.95rem;line-height:1.8}
   .section-head.row .btn{justify-self:start}
@@ -490,7 +491,6 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
         <p class="mantra-lit" aria-hidden="true"><span class="line">If you have the Mentality,</span><span class="line">we have <span class="pack">the Pack.</span></span></p>
       </div>
       <p class="mantra-sub">Independent · All genres · Vinyl + streaming</p>
-      <a class="cue" href="#label" id="cue">Scroll<i aria-hidden="true"></i></a>
     </div>
   </section>
   </div>
@@ -788,7 +788,6 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   }
 
   /* Scroll cue: glide to the label section without touching the route */
-  $("#cue").addEventListener("click",function(e){e.preventDefault();$("#label").scrollIntoView({behavior:reduce?"auto":"smooth"})});
 
   /* Copy email */
   var copyBtn=$("#copyEmail");
