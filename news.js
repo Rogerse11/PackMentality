@@ -73,5 +73,11 @@ window.PM_CONFIG = {
      PM News automatically, after the entries above. Leave it empty to
      show only the entries above. */
   instagramFeed: "",
-  instagramCount: 6
+  instagramCount: 6,
+
+  /* Playable record on PM Music. Put the song (or a preview clip) at this
+     path and the record plays it, pitch-shifting and scratching as people
+     spin it. Until the file exists, the record still spins with vinyl
+     crackle and scratch sounds. MP3 or M4A both work. */
+  recordAudio: "assets/audio/phenomenal.mp3"
 };

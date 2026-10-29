@@ -6,6 +6,20 @@
 <title>Pack Mentality Music</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Pack Mentality Music is an independent record label looking for talent with heart and vision. Vinyl and streaming. If you have the Mentality, we have the Pack.">
+<meta name="theme-color" content="#060509">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pack Mentality Music">
+<meta property="og:title" content="Pack Mentality Music">
+<meta property="og:description" content="Independent record label. All genres, vinyl and streaming. If you have the Mentality, we have the Pack.">
+<meta property="og:url" content="https://rogerse11.github.io/PackMentality/">
+<meta property="og:image" content="https://rogerse11.github.io/PackMentality/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pack Mentality Music logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pack Mentality Music">
+<meta name="twitter:description" content="Independent record label. All genres, vinyl and streaming. If you have the Mentality, we have the Pack.">
+<meta name="twitter:image" content="https://rogerse11.github.io/PackMentality/assets/img/og-image.jpg">
 <link rel="icon" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -252,6 +266,36 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .card-media.yt{border:0;border-radius:0;aspect-ratio:4/3}
 
+/* Playable record: pink/orange pressing on a dark plinth, tonearm drops on play */
+.deck-sec{border-top:1px solid var(--line)}
+.deck-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,5vw,72px);align-items:center}
+.deck-copy{display:grid;gap:1.1rem;max-width:460px}
+.deck-copy .btn svg{width:1em;height:1em}
+.deck{position:relative;aspect-ratio:1.08/1;width:100%;max-width:560px;justify-self:center;border-radius:var(--r);background:linear-gradient(160deg,#1a1522,#0d0a12);border:1px solid var(--line);box-shadow:0 40px 80px -40px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.05)}
+.platter{position:absolute;left:5%;top:7%;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#0b090e 60%,#1d1825 61%,#141019 70%);box-shadow:0 18px 40px -12px rgba(0,0,0,.9);cursor:grab;touch-action:none;outline:none}
+.platter:active{cursor:grabbing}
+.platter:focus-visible{box-shadow:0 0 0 3px var(--mint),0 18px 40px -12px rgba(0,0,0,.9)}
+.platter canvas{position:absolute;inset:2.5%;width:95%;height:95%;border-radius:50%;will-change:transform}
+.platter .sheen{position:absolute;inset:2.5%;border-radius:50%;pointer-events:none;background:conic-gradient(from 210deg,transparent 0 6%,rgba(255,255,255,.22) 11%,transparent 18% 50%,rgba(255,255,255,.14) 58%,transparent 66%);mix-blend-mode:screen}
+.platter .spindle{position:absolute;left:50%;top:50%;width:2.4%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 35% 35%,#f3eff8,#8f87a1);box-shadow:0 1px 3px rgba(0,0,0,.6)}
+.tonearm{position:absolute;right:3%;top:3%;width:19%;transform-origin:75% 10.6%;transform:rotate(-24deg);transition:transform .9s cubic-bezier(.3,1.3,.5,1);filter:drop-shadow(0 10px 10px rgba(0,0,0,.6));pointer-events:none}
+.deck.on .tonearm{transform:rotate(4deg)}
+.deck-led{position:absolute;left:5%;bottom:5%;width:9px;height:9px;border-radius:50%;background:#3a3145;transition:background-color .3s ease,box-shadow .3s ease}
+.deck.on .deck-led{background:var(--magenta);box-shadow:0 0 12px var(--magenta)}
+.vinyl.tex{background:var(--tex) center/cover}
+.vinyl.tex::before{display:none}
+
+/* Legal pages */
+.legal-wrap{max-width:820px}
+.legal-page{padding-top:clamp(48px,7vw,88px)}
+.legal-page .display{font-size:clamp(2rem,5vw,3.4rem)}
+.legal-body{display:grid;gap:1.05rem;max-width:68ch}
+.legal-body h2{margin-top:1.4rem;font:800 1.15rem/1.3 var(--f-display);letter-spacing:-.01em;color:var(--ink)}
+.legal-body ul{margin:0;padding-left:1.2rem;display:grid;gap:.3rem}
+.legal-links{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:.6rem}
+.legal-links a{color:var(--soft);text-decoration:none}
+.legal-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:.2em}
+
 /* ---------- ARTISTS ---------- */
 /* Artist hero: 8-bit "player select" stage. Name plate glitches between the purple and orange plates. */
 .select{position:relative;overflow:hidden;isolation:isolate;padding-block:clamp(44px,6vw,80px) clamp(36px,5vw,56px);border-bottom:1px solid var(--line);
@@ -310,6 +354,8 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
 .facts a{text-decoration:none;display:grid;gap:.45rem}
 .facts a:hover b{color:var(--mint)}
 @media (max-width:820px){
+  .deck-grid{grid-template-columns:minmax(0,1fr)}
+  .deck-copy{max-width:none}
   .select-stage{grid-template-columns:repeat(2,minmax(0,1fr))}
   .plate-col{grid-column:1/-1;grid-row:1;padding-bottom:0}
 }
@@ -568,6 +614,34 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
       </aside>
     </div>
   </section>
+  <section class="section deck-sec" aria-labelledby="deckTitle">
+    <div class="wrap deck-grid">
+      <div class="deck-copy">
+        <p class="eyebrow">Limited edition vinyl</p>
+        <h2 id="deckTitle" class="h2">Spin Phenomenal</h2>
+        <p>The Running Phenomenal vinyl comes in pink and orange. Drop the needle, then grab the record and scratch it.</p>
+        <div class="btn-row">
+          <button class="btn btn-primary" type="button" id="deckPlay" aria-pressed="false"><svg viewBox="0 0 24 24" id="deckIcon"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg><span id="deckLabel">Drop the needle</span></button>
+        </div>
+        <p class="meta" id="deckStatus">33⅓ RPM · drag the record to scratch</p>
+      </div>
+      <div class="deck" id="deck">
+        <div class="platter" id="platter" role="slider" tabindex="0" aria-label="Record. Drag or use the arrow keys to scratch." aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <canvas id="record" width="900" height="900"></canvas>
+          <div class="sheen" aria-hidden="true"></div>
+          <div class="spindle" aria-hidden="true"></div>
+        </div>
+        <svg class="tonearm" id="tonearm" viewBox="0 0 120 320" aria-hidden="true">
+          <circle cx="90" cy="34" r="26" fill="#1c1724" stroke="rgba(243,239,248,.18)" stroke-width="2"/>
+          <circle cx="90" cy="34" r="10" fill="#2a2333"/>
+          <path d="M90 34 L90 230 L64 282" fill="none" stroke="#cfc8da" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="44" y="276" width="34" height="22" rx="4" transform="rotate(-28 61 287)" fill="#e9e4f1"/>
+          <rect x="82" y="2" width="16" height="22" rx="3" fill="#3a3145"/>
+        </svg>
+        <span class="deck-led" id="deckLed" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
   <section class="section" aria-labelledby="mvTitle">
     <div class="wrap">
       <div class="section-head row">
@@ -679,6 +753,88 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   </section>
 </main>
 
+<!-- ================= PRIVACY ================= -->
+<main class="view" id="view-privacy" hidden>
+  <article class="section legal-page">
+    <div class="wrap legal-wrap">
+      <div class="section-head">
+        <p class="eyebrow">Legal</p>
+        <h1 class="display">Privacy Policy</h1>
+        <p class="meta">Last updated: August 1, 2021</p>
+      </div>
+      <div class="legal-body">
+        <p>Pack Mentality Music (&ldquo;us&rdquo;, &ldquo;we&rdquo;, or &ldquo;our&rdquo;) operates the Pack Mentality Music website (the &ldquo;Service&rdquo;).</p>
+        <p>This page informs you of our policies regarding the collection, use and disclosure of Personal Information when you use our Service.</p>
+        <p>We will not use or share your information with anyone except as described in this Privacy Policy.</p>
+        <p>We use your Personal Information for providing and improving the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our <a class="text-link" href="#terms">Terms and Conditions</a>, accessible at https://packmentalitymusic.com</p>
+        <h2>Information Collection And Use</h2>
+        <p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information (&ldquo;Personal Information&rdquo;) may include, but is not limited to:</p>
+        <ul><li>Name</li><li>Email address</li><li>Address</li></ul>
+        <h2>Log Data</h2>
+        <p>We collect information that your browser sends whenever you visit our Service (&ldquo;Log Data&rdquo;). This Log Data may include information such as your computer&rsquo;s Internet Protocol (&ldquo;IP&rdquo;) address, browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages and other statistics.</p>
+        <h2>Google AdSense &amp; DoubleClick Cookie</h2>
+        <p>Google, as a third party vendor, uses cookies to serve ads on our Service.</p>
+        <h2>Cookies</h2>
+        <p>Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer&rsquo;s hard drive.</p>
+        <p>We use &ldquo;cookies&rdquo; to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
+        <h2>Service Providers</h2>
+        <p>We may employ third party companies and individuals to facilitate our Service, to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
+        <p>These third parties have access to your Personal Information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+        <h2>Security</h2>
+        <p>The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.</p>
+        <h2>Links To Other Sites</h2>
+        <p>Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party&rsquo;s site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
+        <p>We have no control over, and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+        <h2>Children&rsquo;s Privacy</h2>
+        <p>Our Service does not address anyone under the age of 18 (&ldquo;Children&rdquo;).</p>
+        <p>We do not knowingly collect personally identifiable information from children under 18. If you are a parent or guardian and you are aware that your child has provided us with Personal Information, please contact us. If we discover that a child under 18 has provided us with Personal Information, we will delete such information from our servers immediately.</p>
+        <h2>Changes To This Privacy Policy</h2>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+        <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+        <h2>Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us at <a class="text-link" href="mailto:contact@packmentalitymusic.com">contact@packmentalitymusic.com</a>.</p>
+      </div>
+    </div>
+  </article>
+</main>
+
+<!-- ================= TERMS ================= -->
+<main class="view" id="view-terms" hidden>
+  <article class="section legal-page">
+    <div class="wrap legal-wrap">
+      <div class="section-head">
+        <p class="eyebrow">Legal</p>
+        <h1 class="display">Terms and Conditions</h1>
+        <p class="meta">Last updated: August 1, 2021</p>
+      </div>
+      <div class="legal-body">
+        <p>Please read these Terms of Use (&ldquo;Terms&rdquo;, &ldquo;Terms of Use&rdquo;) carefully before using the https://packmentalitymusic.com website (the &ldquo;Service&rdquo;) operated by Pack Mentality Music (&ldquo;us&rdquo;, &ldquo;we&rdquo;, or &ldquo;our&rdquo;).</p>
+        <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.</p>
+        <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
+        <h2>Intellectual Property</h2>
+        <p>The Service and its original content, features and functionality are and will remain the exclusive property of Pack Mentality Music and its licensors.</p>
+        <h2>Links To Other Web Sites</h2>
+        <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Pack Mentality Music.</p>
+        <p>Pack Mentality Music has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Pack Mentality Music shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+        <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.</p>
+        <h2>Termination</h2>
+        <p>We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+        <p>All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</p>
+        <h2>Disclaimer</h2>
+        <p>Your use of the Service is at your sole risk. The Service is provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance.</p>
+        <h2>Governing Law</h2>
+        <p>These Terms shall be governed and construed in accordance with the laws of United States without regard to its conflict of law provisions.</p>
+        <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service.</p>
+        <h2>Changes</h2>
+        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+        <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
+        <h2>Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us at <a class="text-link" href="mailto:contact@packmentalitymusic.com">contact@packmentalitymusic.com</a>.</p>
+      </div>
+    </div>
+  </article>
+</main>
+
 <!-- ================= FOOTER ================= -->
 <footer class="foot">
   <div class="wrap">
@@ -713,7 +869,10 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
     </div>
     <div class="legal">
       <img src="assets/img/pm-logo-horizontal-t.png" alt="Pack Mentality Music">
-      <p>&copy; <span id="year">2026</span> Pack Mentality Music. All rights reserved. Music, artwork and photography are the property of Pack Mentality Music and its artists and may not be used without permission. By joining the mailing list you agree to receive emails from Pack Mentality Music; unsubscribe anytime. We never sell or share your information.</p>
+      <div>
+      <p>&copy; 2021 Pack Mentality Music. All rights reserved. Music, artwork and photography are the property of Pack Mentality Music and its artists and may not be used without permission. By joining the mailing list you agree to receive emails from Pack Mentality Music; unsubscribe anytime. We never sell or share your information.</p>
+        <nav class="legal-links" aria-label="Legal"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms and Conditions</a></nav>
+      </div>
     </div>
   </div>
 </footer>
@@ -733,8 +892,8 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
   /* Router: #home, #music, #artists */
-  var views={home:$("#view-home"),music:$("#view-music"),artists:$("#view-artists")};
-  var titles={home:"Pack Mentality Music",music:"Phenomenal · Pack Mentality Music",artists:"8 Ton Grams · Pack Mentality Music"};
+  var views={home:$("#view-home"),music:$("#view-music"),artists:$("#view-artists"),privacy:$("#view-privacy"),terms:$("#view-terms")};
+  var titles={home:"Pack Mentality Music",music:"Phenomenal · Pack Mentality Music",artists:"8 Ton Grams · Pack Mentality Music",privacy:"Privacy Policy · Pack Mentality Music",terms:"Terms and Conditions · Pack Mentality Music"};
   function show(){
     var name=(location.hash||"").replace("#","");
     if(!views[name]) name="home";
@@ -746,6 +905,7 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
     window.scrollTo(0,0);
     closeNav();
     if(name==="music") vinylIntro();
+    if(name!=="music"&&typeof setPlaying==="function"&&st&&st.playing) setPlaying(false);
     requestAnimationFrame(parallax);
     headState();
     if(name==="artists") glitchNow();
@@ -933,6 +1093,142 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
   }
   addEventListener("scroll",function(){if(!views.music.hidden)requestAnimationFrame(vinylSet)},{passive:true});
 
+  /* ===== Playable record ===== */
+  var deckEl=$("#deck"),platter=$("#platter"),rec=$("#record"),playBtn=$("#deckPlay"),deckLabel=$("#deckLabel"),deckIcon=$("#deckIcon"),deckStatus=$("#deckStatus");
+  var MOTOR=2*Math.PI*33.333/60; /* rad per second at 33 1/3 rpm */
+  var st={angle:0,vel:0,playing:false,drag:false,lastA:0,lastT:0,raf:0,t:0};
+
+  /* draw the pink/orange pressing once, then reuse it for the sleeve record too */
+  function drawRecord(cb){
+    var S=rec.width,ctx=rec.getContext("2d"),img=ctx.createImageData(S,S),d=img.data,R=S/2;
+    var P=[255,86,170],O=[255,140,66],Y=[255,196,120];
+    for(var y=0;y<S;y++){for(var x=0;x<S;x++){
+      var dx=x-R+.5,dy=y-R+.5,r=Math.sqrt(dx*dx+dy*dy)/R,i=(y*S+x)*4;
+      if(r>1){d[i+3]=0;continue}
+      var a=Math.atan2(dy,dx);
+      var w=Math.sin(a*2+r*7.5+Math.sin(a*5+r*13)*.9)*.5+.5;
+      var w2=Math.sin(a*3-r*11+Math.cos(a*2-r*6)*1.3)*.5+.5;
+      var m=Math.min(1,Math.max(0,(w*.75+w2*.35-.35)*1.6));
+      var c0=P[0]+(O[0]-P[0])*m,c1=P[1]+(O[1]-P[1])*m,c2=P[2]+(O[2]-P[2])*m;
+      var hi=Math.pow(Math.max(0,w2-.82)*5.5,2)*.5; c0+=(Y[0]-c0)*hi;c1+=(Y[1]-c1)*hi;c2+=(Y[2]-c2)*hi;
+      var g=1;
+      if(r>.36&&r<.965){g=.80+.2*(.5+.5*Math.sin(r*R*1.9));if(((r*36)|0)%7===0)g*=.86}
+      else if(r>=.965){g=.72}
+      else{g=.93}
+      d[i]=c0*g;d[i+1]=c1*g;d[i+2]=c2*g;d[i+3]=r>.995?Math.round((1-r)*200*255/1):255;
+    }}
+    ctx.putImageData(img,0,0);
+    var lab=new Image();
+    lab.onload=function(){
+      ctx.save();ctx.beginPath();ctx.arc(R,R,R*.33,0,Math.PI*2);ctx.clip();
+      ctx.drawImage(lab,R-R*.33,R-R*.33,R*.66,R*.66);
+      ctx.fillStyle="rgba(6,5,9,.15)";ctx.fill();ctx.restore();
+      ctx.beginPath();ctx.arc(R,R,R*.335,0,Math.PI*2);ctx.lineWidth=R*.01;ctx.strokeStyle="rgba(0,0,0,.35)";ctx.stroke();
+      ctx.beginPath();ctx.arc(R,R,R*.03,0,Math.PI*2);ctx.fillStyle="#060509";ctx.fill();
+      cb&&cb();
+    };
+    lab.src="assets/img/phenomenal-cover.jpg";
+  }
+  drawRecord(function(){
+    try{var v=$(".vinyl");v.style.setProperty("--tex",'url("'+rec.toDataURL("image/webp",.85)+'")');v.classList.add("tex")}catch(e){}
+  });
+
+  /* audio: the song (if present) follows the platter speed; crackle and scratch are synthesized */
+  var AC=null,song=null,songRev=null,src=null,srcDir=1,pos=0,songGain,crackleGain,scratchGain,scratchBP,songState="idle";
+  function noiseBuf(sec,pops){
+    var n=AC.sampleRate*sec,b=AC.createBuffer(1,n,AC.sampleRate),c=b.getChannelData(0);
+    for(var i=0;i<n;i++){c[i]=(Math.random()*2-1)*(pops?.06:1);if(pops&&Math.random()<.00035)c[i]=(Math.random()*2-1)*.9}
+    return b;
+  }
+  function initAudio(){
+    if(AC)return;
+    var C=window.AudioContext||window.webkitAudioContext; if(!C)return;
+    AC=new C();
+    var master=AC.createGain();master.gain.value=.9;master.connect(AC.destination);
+    songGain=AC.createGain();songGain.gain.value=0;songGain.connect(master);
+    crackleGain=AC.createGain();crackleGain.gain.value=0;crackleGain.connect(master);
+    var cr=AC.createBufferSource();cr.buffer=noiseBuf(3,true);cr.loop=true;
+    var hp=AC.createBiquadFilter();hp.type="highpass";hp.frequency.value=1200;cr.connect(hp);hp.connect(crackleGain);cr.start();
+    scratchGain=AC.createGain();scratchGain.gain.value=0;scratchGain.connect(master);
+    scratchBP=AC.createBiquadFilter();scratchBP.type="bandpass";scratchBP.Q.value=2.2;scratchBP.connect(scratchGain);
+    var sn=AC.createBufferSource();sn.buffer=noiseBuf(2,false);sn.loop=true;sn.connect(scratchBP);sn.start();
+    var url=(window.PM_CONFIG&&window.PM_CONFIG.recordAudio)||"";
+    if(!url){songState="none";return}
+    songState="loading";
+    fetch(url).then(function(r){if(!r.ok)throw 0;return r.arrayBuffer()}).then(function(ab){
+      return new Promise(function(res,rej){AC.decodeAudioData(ab,res,rej)});
+    }).then(function(buf){
+      song=buf;songRev=AC.createBuffer(buf.numberOfChannels,buf.length,buf.sampleRate);
+      for(var ch=0;ch<buf.numberOfChannels;ch++){var s=buf.getChannelData(ch),t=songRev.getChannelData(ch),L=s.length;for(var i=0;i<L;i++)t[i]=s[L-1-i]}
+      songState="ready";
+    }).catch(function(){songState="none";deckStatus.textContent="Song preview coming soon · drag the record to scratch"});
+  }
+  function startSrc(dir){
+    if(!song)return;
+    if(src){try{src.stop()}catch(e){}src.disconnect()}
+    var D=song.duration;pos=((pos%D)+D)%D;
+    src=AC.createBufferSource();src.buffer=dir>0?song:songRev;src.loop=true;src.connect(songGain);
+    src.start(0,dir>0?pos:D-pos);srcDir=dir;
+  }
+  function audioTick(dt){
+    if(!AC)return;
+    var now=AC.currentTime,rate=st.vel/MOTOR,ar=Math.abs(rate);
+    crackleGain.gain.setTargetAtTime(Math.min(1,ar)*.05,now,.05);
+    var scratch=st.drag?Math.min(1,Math.abs(rate-(st.playing?1:0))*.5):0;
+    scratchGain.gain.setTargetAtTime(scratch*.22,now,.02);
+    scratchBP.frequency.setTargetAtTime(300+Math.min(3,ar)*900,now,.02);
+    if(song){
+      pos+=rate*dt;
+      var dir=rate>=0?1:-1;
+      if(!src||(ar>.02&&dir!==srcDir))startSrc(dir);
+      src.playbackRate.setTargetAtTime(Math.max(.05,Math.min(3,ar)),now,.012);
+      songGain.gain.setTargetAtTime(ar<.04?0:1,now,.03);
+    }
+  }
+
+  /* physics loop: motor pulls toward 33 1/3, hands override, friction on stop */
+  function frame(t){
+    var dt=st.t?Math.min(.05,(t-st.t)/1000):0;st.t=t;
+    if(!st.drag){
+      if(st.playing) st.vel+=(MOTOR-st.vel)*Math.min(1,dt*2.6);
+      else st.vel*=Math.exp(-dt*1.6);
+      st.angle+=st.vel*dt;
+    }
+    rec.style.transform="rotate("+st.angle.toFixed(4)+"rad)";
+    platter.setAttribute("aria-valuenow",String(Math.round(((st.angle/(2*Math.PI))%1+1)%1*100)));
+    audioTick(dt);
+    if(st.playing||st.drag||Math.abs(st.vel)>.01) st.raf=requestAnimationFrame(frame);
+    else{st.raf=0;st.t=0;st.vel=0;audioTick(0)}
+  }
+  function kick(){if(!st.raf){st.t=0;st.raf=requestAnimationFrame(frame)}}
+  function setPlaying(on){
+    st.playing=on;deckEl.classList.toggle("on",on);playBtn.setAttribute("aria-pressed",on?"true":"false");
+    deckLabel.textContent=on?"Lift the needle":"Drop the needle";
+    deckIcon.innerHTML=on?'<path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/>':'<path d="M7 4l13 8-13 8z" fill="currentColor"/>';
+    if(on){initAudio();AC&&AC.resume&&AC.resume()}
+    kick();
+  }
+  playBtn.addEventListener("click",function(){setPlaying(!st.playing)});
+
+  function ang(e){var r=platter.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))}
+  platter.addEventListener("pointerdown",function(e){
+    initAudio();AC&&AC.resume&&AC.resume();
+    st.drag=true;st.lastA=ang(e);st.lastT=performance.now();st.vel=0;platter.setPointerCapture(e.pointerId);kick();
+  });
+  platter.addEventListener("pointermove",function(e){
+    if(!st.drag)return;
+    var a=ang(e),now=performance.now(),da=a-st.lastA;
+    if(da>Math.PI)da-=2*Math.PI;if(da<-Math.PI)da+=2*Math.PI;
+    var dt=Math.max(.001,(now-st.lastT)/1000);
+    st.angle+=da;st.vel=st.vel*.55+(da/dt)*.45;st.lastA=a;st.lastT=now;
+  });
+  function release(){if(st.drag){st.drag=false;kick()}}
+  platter.addEventListener("pointerup",release);platter.addEventListener("pointercancel",release);
+  platter.addEventListener("keydown",function(e){
+    if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();initAudio();st.vel+=(e.key==="ArrowRight"?1:-1)*MOTOR*1.5;kick()}
+    if(e.key===" "||e.key==="Enter"){e.preventDefault();setPlaying(!st.playing)}
+  });
+
   /* Follow The Pack signup */
   var form=$("#signup"),msg=$("#signupMsg"),input=$("#signupEmail");
   form.addEventListener("submit",function(e){
@@ -947,7 +1243,6 @@ dialog.reader::backdrop{background:rgba(6,5,9,.82)}
       .catch(function(){msg.classList.add("warn");msg.textContent="That didn't go through. Try again, or email contact@packmentalitymusic.com."});
   });
 
-  $("#year").textContent=new Date().getFullYear();
   show();
 })();
 </script>
